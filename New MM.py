@@ -46,13 +46,15 @@ white=0
 whitechecker=0
 codepool = [1,2,3,4,5,6,7,8]
 stopcount=0
-f= open("guru99.txt","w+")
-while stopcount <5:
+f= open('guru99.txt','w')
+
+f.close
+while stopcount <30:
     while MM:
         #ocode=codegeneate(input("Length:"),input("Pool:"))
         ocode = codegeneate(4, 8)
         stopcount= stopcount+1
-        f.write("OCODE:")
+        f.write('\n OCODE:')
         f.write(str(ocode))
         #print(ocode)
         individual = True
@@ -62,16 +64,16 @@ while stopcount <5:
             if guesstimes >0 and guesstimes<5:
                 guess = (guesstimes,guesstimes+1,guesstimes+2,guesstimes+3)
                 print ("your guess is",guess)
-                f.write("\n Guess"+str(guesstimes)+":"+str(guess))
+                f.write('\n Guess'+str(guesstimes)+':'+str(guess))
+                FB = check(guess)
+                f.write('\n'+FB)
             else:
                 MM= False
                 individual = False
-                f.write("Roundcomplete")
                 #guess = aspt()
                 #guess = ("1 1 1 1")
                 #print ("your guess is", guess)
-            FB = check(guess)
-            f.write("\n"+FB)
+            
             #white checking sysmtem to determine the word length change, to determine the change in feedback
             if guesstimes == 1:
                 white+=len(FB)
@@ -108,9 +110,12 @@ while stopcount <5:
             MM=True
             individual= True
             guesstimes =0
+            f.write('\n '+str(codepool)+'\n ')
             codepool = [1, 2, 3, 4, 5, 6, 7, 8]
-        if stopcount >5:
+            f.write(' Roundcomplete \n \n')
+            
+        if stopcount >30:
             break
-    if stopcount >5:
+    if stopcount >30:
         break
-f.close
+f.close()
