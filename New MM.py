@@ -52,7 +52,8 @@ while stopcount <5:
         #ocode=codegeneate(input("Length:"),input("Pool:"))
         ocode = codegeneate(4, 8)
         stopcount= stopcount+1
-        f.write("OCODE:"+ocode)
+        f.write("OCODE:")
+        f.write(ocode)
         #print(ocode)
         individual = True
         while individual:
