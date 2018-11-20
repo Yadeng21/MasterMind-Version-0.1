@@ -53,7 +53,7 @@ while stopcount <5:
         ocode = codegeneate(4, 8)
         stopcount= stopcount+1
         f.write("OCODE:")
-        f.write(ocode)
+        f.write(str(ocode))
         #print(ocode)
         individual = True
         while individual:
@@ -62,7 +62,7 @@ while stopcount <5:
             if guesstimes >0 and guesstimes<5:
                 guess = (guesstimes,guesstimes+1,guesstimes+2,guesstimes+3)
                 print ("your guess is",guess)
-                f.write("\n Guess",guesstimes,":",guess)
+                f.write("\n Guess",str(guesstimes),":",str(guess))
             else:
                 MM= False
                 individual = False
