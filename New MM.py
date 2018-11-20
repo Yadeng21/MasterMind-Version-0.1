@@ -62,7 +62,7 @@ while stopcount <5:
             if guesstimes >0 and guesstimes<5:
                 guess = (guesstimes,guesstimes+1,guesstimes+2,guesstimes+3)
                 print ("your guess is",guess)
-                f.write("\n Guess",str(guesstimes),":",str(guess))
+                f.write("\n Guess"+str(guesstimes)+":"+str(guess))
             else:
                 MM= False
                 individual = False
@@ -71,7 +71,7 @@ while stopcount <5:
                 #guess = ("1 1 1 1")
                 #print ("your guess is", guess)
             FB = check(guess)
-            f.write("\n",FB)
+            f.write("\n"+FB)
             #white checking sysmtem to determine the word length change, to determine the change in feedback
             if guesstimes == 1:
                 white+=len(FB)
