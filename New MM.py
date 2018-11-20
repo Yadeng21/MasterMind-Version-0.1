@@ -109,4 +109,8 @@ while stopcount <5:
             individual= True
             guesstimes =0
             codepool = [1, 2, 3, 4, 5, 6, 7, 8]
+        if stopcount >5:
+            break
+    if stopcount >5:
+        break
 f.close
