@@ -52,7 +52,7 @@ while stopcount <5:
         #ocode=codegeneate(input("Length:"),input("Pool:"))
         ocode = codegeneate(4, 8)
         stopcount= stopcount+1
-        f.write("OCODE:"+code)
+        f.write("OCODE:"+ocode)
         #print(ocode)
         individual = True
         while individual:
@@ -61,7 +61,7 @@ while stopcount <5:
             if guesstimes >0 and guesstimes<5:
                 guess = (guesstimes,guesstimes+1,guesstimes+2,guesstimes+3)
                 print ("your guess is",guess)
-                f.write(\n,"Guess",guesstimes,":",guess)
+                f.write("\n Guess",guesstimes,":",guess)
             else:
                 MM= False
                 individual = False
@@ -70,7 +70,7 @@ while stopcount <5:
                 #guess = ("1 1 1 1")
                 #print ("your guess is", guess)
             FB = check(guess)
-            f.write(\n,FB)
+            f.write("\n",FB)
             #white checking sysmtem to determine the word length change, to determine the change in feedback
             if guesstimes == 1:
                 white+=len(FB)
