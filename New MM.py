@@ -45,58 +45,67 @@ guesstimes=0
 white=0
 whitechecker=0
 codepool = [1,2,3,4,5,6,7,8]
-while MM:
-    #ocode=codegeneate(input("Length:"),input("Pool:"))
-    ocode = codegeneate(4, 8)
-    #print(ocode)
-    individual = True
-    while individual:
-        guesstimes+=1
-        #guess=aspt() remove input function because PC will autamatic generate
-        if guesstimes >0 and guesstimes<5:
-            guess = (guesstimes,guesstimes+1,guesstimes+2,guesstimes+3)
-            print ("your guess is", guess)
-        else:
-            MM= False
-            individual = False
-            #guess = aspt()
-            #guess = ("1 1 1 1")
-            #print ("your guess is", guess)
-        FB = check(guess)
-        #white checking sysmtem to determine the word length change, to determine the change in feedback
-        if guesstimes == 1:
-            white+=len(FB)
-            print (white)
-        else:
-            if white > len(FB):
-                #Removed number is better
-                whitechecker = -1
-                print (whitechecker,"Bad New Number")
-                codepool[guesstimes+2] = 0
-                print (codepool)
-            elif white < len(FB):
-                #Removed number is bad
-                whitechecker = 1
-                print (whitechecker,"Good new number")
-                codepool[guesstimes - 2] = 0
-                print (codepool)
+stopcount=0
+f= open("guru99.txt","w+")
+while stopcount <5:
+    while MM:
+        #ocode=codegeneate(input("Length:"),input("Pool:"))
+        ocode = codegeneate(4, 8)
+        stopcount= stopcount+1
+        f.write("OCODE:"+code)
+        #print(ocode)
+        individual = True
+        while individual:
+            guesstimes+=1
+            #guess=aspt() remove input function because PC will autamatic generate
+            if guesstimes >0 and guesstimes<5:
+                guess = (guesstimes,guesstimes+1,guesstimes+2,guesstimes+3)
+                print ("your guess is",guess)
+                f.write(\n,"Guess",guesstimes,":",guess)
             else:
-                #Both number have the same trait.
-                whitechecker = 0
-                print (whitechecker,"They have the same trait!")
+                MM= False
+                individual = False
+                f.write("Roundcomplete")
+                #guess = aspt()
+                #guess = ("1 1 1 1")
+                #print ("your guess is", guess)
+            FB = check(guess)
+            f.write(\n,FB)
+            #white checking sysmtem to determine the word length change, to determine the change in feedback
+            if guesstimes == 1:
+                white+=len(FB)
+                print (white)
+            else:
+                if white > len(FB):
+                    #Removed number is better
+                    whitechecker = -1
+                    print (whitechecker,"Bad New Number")
+                    codepool[guesstimes+2] = 0
+                    print (codepool)
+                elif white < len(FB):
+                    #Removed number is bad
+                    whitechecker = 1
+                    print (whitechecker,"Good new number")
+                    codepool[guesstimes - 2] = 0
+                    print (codepool)
+                else:
+                    #Both number have the same trait.
+                    whitechecker = 0
+                    print (whitechecker,"They have the same trait!")
 
-            white = len(FB)
-            print (white)
-        if FB=="RRRR" :
-            print("Yes!! you've nailed it!")
-            MM= False
-            individual= False
-        if guesstimes >10:
-            print("Well, you did dont get the anwser. The answer is ",ocode)
-            MM= False
-            individual = False
-    if MM==False:
-        MM=True
-        individual= True
-        guesstimes =0
-        codepool = [1, 2, 3, 4, 5, 6, 7, 8]
+                white = len(FB)
+                print (white)
+            if FB=="RRRR" :
+                print("Yes!! you've nailed it!")
+                MM= False
+                individual= False
+            if guesstimes >10:
+                print("Well, you did dont get the anwser. The answer is ",ocode)
+                MM= False
+                individual = False
+        if MM==False:
+            MM=True
+            individual= True
+            guesstimes =0
+            codepool = [1, 2, 3, 4, 5, 6, 7, 8]
+f.close
