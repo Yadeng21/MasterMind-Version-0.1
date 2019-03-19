@@ -39,7 +39,7 @@ def check(guesses):
     print(FB)
     return FB
     
-    MM= True
+MM= True
 guesstimes=0
 while MM:
     #ocode=codegeneate(input("Length:"),input("Pool:"))
